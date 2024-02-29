@@ -40,6 +40,7 @@ class CalculatorLogic {
     }
   }
 
+
   void clear() {
     _currentValue = 0;
     _bufferValue = 0;
