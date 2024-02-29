@@ -22,24 +22,29 @@ class CalculatorLogic {
   }
 
   void _compute() {
-    switch (_operation) {
-      case '+':
-        _currentValue = _bufferValue + _currentValue;
-        break;
-      case '-':
-        _currentValue = _bufferValue - _currentValue;
-        break;
-      case '*':
-        _currentValue = _bufferValue * _currentValue;
-        break;
-      case '/':
-        if (_currentValue != 0) {
-          _currentValue = _bufferValue / _currentValue;
-        }
-        break;
+    if (_currentValue != 0 || _operation != '/') {
+      switch (_operation) {
+        case '+':
+          _currentValue = _bufferValue + _currentValue;
+          break;
+        case '-':
+          _currentValue = _bufferValue - _currentValue;
+          break;
+        case '*':
+          _currentValue = _bufferValue * _currentValue;
+          break;
+        case '/':
+          if (_currentValue != 0) {
+            _currentValue = _bufferValue / _currentValue;
+          } else {
+            _currentValue = double.infinity;
+          }
+          break;
+      }
+    } else {     
+      _currentValue = double.infinity;
     }
   }
-
 
   void clear() {
     _currentValue = 0;
